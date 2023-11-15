@@ -1,4 +1,7 @@
+
+
 export const sendPhotoToServer = async (photo) => {
+  const api_url = 'http://brick-ai.eu-4.evennode.com';
   const formData = new FormData();
   formData.append('file', {
     uri: photo.uri,
@@ -6,7 +9,7 @@ export const sendPhotoToServer = async (photo) => {
     name: 'photo.jpg',
   });
 
-  const response = await fetch('http://172.20.10.14:5000/detect_legos', {
+  const response = await fetch({api_url} + '/detect_legos', {
     method: 'POST',
     body: formData,
   });
@@ -15,6 +18,7 @@ export const sendPhotoToServer = async (photo) => {
 }
 
 export const guessBricks = async (bricks) => {
+  const api_url = 'http://brick-ai.eu-4.evennode.com';
   // Check if bricks is valid and has data
   if (!bricks || !bricks.data) {
     throw new Error('Invalid bricks data');
@@ -30,7 +34,7 @@ export const guessBricks = async (bricks) => {
     };
 
     // Send the request
-    const response = await fetch('http://172.20.10.14:5000/guess_lego', {
+    const response = await fetch({api_url} + '/guess_lego', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

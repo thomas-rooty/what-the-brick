@@ -50,9 +50,12 @@ const CameraView = () => {
   const takePhoto = async () => {
     setLoading(true);
     setViewState('loading'); // switch to loading view
+    console.log('Taking photo...');
     const photo = await cameraRef.current.takePictureAsync();
     const bricks = await sendPhotoToServer(photo)
+    console.log(bricks);
     const guessed_bricks = await guessBricks(bricks)
+    console.log(guessed_bricks);
     setGuessedBricks(guessed_bricks)
     setLoading(false);
     setViewState('success'); // switch to success view
