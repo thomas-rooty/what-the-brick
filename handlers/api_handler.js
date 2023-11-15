@@ -13,8 +13,6 @@ export const sendPhotoToServer = async (photo) => {
     body: formData,
   });
 
-  console.log(response)
-
   return await response.json();
 }
 

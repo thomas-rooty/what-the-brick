@@ -1,7 +1,7 @@
 import {Camera, CameraType} from 'expo-camera';
 import {useRef, useEffect, useState} from 'react';
 import {Button, StyleSheet, Text, View, Animated, TouchableWithoutFeedback} from 'react-native';
-import {sendPhotoToServer, guessBricks} from "./handlers/api_handler";
+import {sendPhotoToServer, guessBricks} from "../handlers/api_handler";
 
 const CameraView = () => {
   const cameraRef = useRef(null);
@@ -54,6 +54,7 @@ const CameraView = () => {
     const bricks = await sendPhotoToServer(photo)
     const guessed_bricks = await guessBricks(bricks)
     setGuessedBricks(guessed_bricks)
+    console.log(guessed_bricks)
     setLoading(false);
     setViewState('success'); // switch to success view
   }
@@ -99,7 +100,7 @@ const CameraView = () => {
             onPress={takePhoto}
           >
             <Animated.Image
-              source={require('./assets/wtb_icon.png')}
+              source={require('../assets/wtb_icon.png')}
               style={[
                 styles.wtb,
                 {transform: [{scale}]}
