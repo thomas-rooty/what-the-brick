@@ -57,14 +57,10 @@ Example with curl:
 curl -X POST -H "Content-Type: application/json" -d '{"urls": ["http://image_url1.jpg", "http://image_url2.jpg"]}' http://127.0.0.1:5000/guess_lego
 ```
 
-### Retrieving Processed Images
-Access processed images by navigating to /output/<filename>.
+## App preview
 
-## API Endpoints
-- GET /: Returns information about the API.
-- POST /detect_legos: Accepts an image file and returns detected Lego bricks.
-- POST /guess_lego: Accepts URLs of Lego brick images and returns their guessed types.
-- GET /output/<filename>: Retrieves a processed image.
+### Home page
+![img.png](img.png)
 
 ### Contributing
 We welcome contributions to improve the Lego Detector API! Whether it's bug fixes, feature enhancements, or documentation improvements, your help is valuable.
