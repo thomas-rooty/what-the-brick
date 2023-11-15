@@ -2,6 +2,8 @@ import {Camera, CameraType} from 'expo-camera';
 import {useRef, useEffect, useState} from 'react';
 import {Button, StyleSheet, Text, View, Animated, TouchableWithoutFeedback} from 'react-native';
 import {sendPhotoToServer, guessBricks} from "../handlers/api_handler";
+import Guessing from "./Guessing";
+import SuccessView from "./SuccessView";
 
 const CameraView = () => {
   const cameraRef = useRef(null);
@@ -49,14 +51,13 @@ const CameraView = () => {
 
   const takePhoto = async () => {
     setLoading(true);
-    setViewState('loading'); // switch to loading view
     const photo = await cameraRef.current.takePictureAsync();
+    setViewState('loading');
     const bricks = await sendPhotoToServer(photo)
     const guessed_bricks = await guessBricks(bricks)
     setGuessedBricks(guessed_bricks)
-    console.log(guessed_bricks)
     setLoading(false);
-    setViewState('success'); // switch to success view
+    setViewState('success');
   }
 
   if (!permission) {
@@ -73,19 +74,11 @@ const CameraView = () => {
   }
 
   if (viewState === 'loading') {
-    return (
-      <View style={styles.container}>
-        <Text>Guessing the bricks...</Text>
-      </View>
-    );
+    return <Guessing />
   }
 
   if (viewState === 'success') {
-    return (
-      <View style={styles.container}>
-        <Text>Success!</Text>
-      </View>
-    );
+    return <SuccessView bricks={guessedBricks} />
   }
 
   // Camera view

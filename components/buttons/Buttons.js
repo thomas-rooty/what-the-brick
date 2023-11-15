@@ -1,9 +1,13 @@
-import {TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 export const WtbButton = ({onPress}) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.text}>What the Brick ?!</Text>
+      <Image
+        source={require('../../assets/buttons/main_button.png')}
+        style={styles.wtbIcon}
+        resizeMode={'contain'}
+      />
     </TouchableOpacity>
   );
 }
@@ -11,15 +15,16 @@ export const WtbButton = ({onPress}) => {
 const styles = StyleSheet.create({
   button: {
     position: 'absolute',
-    bottom: 100,
-    backgroundColor: '#181818',
-    padding: 8,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#3f3f3f',
-    borderRadius: 6,
+    bottom: '10%',
+    width: '80%',
+    height: undefined,
+    aspectRatio: 915 / 360,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  text: {
-    color: '#949494',
-  }
+  wtbIcon: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
 });
