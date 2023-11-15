@@ -14,6 +14,21 @@ const Home = ({navigation}) => {
           source={require('../assets/wtb_logo.png')}
           resizeMode={'contain'}
         />
+        <Image
+          style={[styles.speaker, {width: '50%'}]}
+          source={require('../assets/lego_speaker.png')}
+          resizeMode={'contain'}
+        />
+        <Image
+          style={[styles.chat, {width: '90%'}]}
+          source={require('../assets/chat_bubble.png')}
+          resizeMode={'contain'}
+        />
+        <Image
+          style={[styles.textChat, {width: '70%'}]}
+          source={require('../assets/take_a_pic.png')}
+          resizeMode={'contain'}
+        />
         <WtbButton onPress={() => navigation.navigate('Camera')}/>
         <StatusBar style="auto"/>
       </View>
@@ -35,6 +50,19 @@ const styles = StyleSheet.create({
   wtbIcon: {
     position: 'absolute',
     top: 60,
+  },
+  speaker: {
+    position: 'absolute',
+    top: -30,
+    left: 0,
+  },
+  chat: {
+    position: 'absolute',
+    top: -260,
+  },
+  textChat: {
+    position: 'absolute',
+    top: 230,
   },
 });
 
